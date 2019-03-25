@@ -1,6 +1,6 @@
 <?php
 define('WP_USE_THEMES', false);
-require('../../../../wp-load.php');
+require('../../../wp-load.php');
 
 $groups = acf_get_local_field_groups();
 $json = [];
@@ -28,7 +28,9 @@ echo "</pre>";
 // Write output to file for easy import into ACF.
 // The file must be writable by the server process. In this case, the file is located in
 // the current theme directory.
-$file = get_template_directory() . '/wp-convert-acf-php-to-json/acf-php-export.json';
+$file = dirname(__FILE__) . '/acf-php-export.json';
+
+
 file_put_contents($file, $json );
 
 ?>
